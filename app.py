@@ -132,7 +132,6 @@ with st.sidebar:
     st.info(
         "**Author:** Jayesh Chaudhary\n\n"
         "**Role:** Quantitative Researcher\n\n"
-        "**Topic:** Advanced Derivatives Pricing\n\n"
     )
 
 # ==========================================
@@ -297,6 +296,10 @@ In this analysis, Full LSV is used as the internal benchmark, as it matches obse
 st.dataframe(load_barrier_exotics(), use_container_width=True, hide_index=True)
 
 st.markdown("""
+Across all configurations, Dupire overprices barrier options by more than 200%, while Heston and LSV remain within a few percent of each other.
+""")
+
+st.markdown("""
 <div class="mechanism-box">
 <strong>The Cost of Deterministic Volatility:</strong><br>
 Equity indices generally exhibit a negative spot-volatility correlation. If the SPX drops toward the barrier, market volatility structurally increases. This higher volatility raises the probability that the asset price breaches the knock-out level, rendering the option worthless.<br><br>
@@ -306,12 +309,6 @@ LSV captures this dynamic, resulting in a lower option premium. Dupire LV, assum
 
 st.markdown("### Model Summary")
 
-sc1, sc2, sc3, sc4, sc5 = st.columns(5)
-with sc1: st.markdown("<div class='stat-box'><div class='stat-value'>80k</div><div class='stat-label'>Monte Carlo Paths</div></div>", unsafe_allow_html=True)
-with sc2: st.markdown("<div class='stat-box'><div class='stat-value'>5</div><div class='stat-label'>OOS Forward Days</div></div>", unsafe_allow_html=True)
-with sc3: st.markdown("<div class='stat-box'><div class='stat-value'>$19.42</div><div class='stat-label'>OOS LSV RMSE</div></div>", unsafe_allow_html=True)
-with sc4: st.markdown("<div class='stat-box'><div class='stat-value'>$248.19</div><div class='stat-label'>Exotic Fair Value</div></div>", unsafe_allow_html=True)
-with sc5: st.markdown("<div class='stat-box'><div class='stat-value' style='color:#EF4444;'>+240%</div><div class='stat-label'>Dupire Pricing Error</div></div>", unsafe_allow_html=True)
 
 st.markdown("""
 <div class="findings-box">
