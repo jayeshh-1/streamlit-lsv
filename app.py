@@ -206,9 +206,9 @@ st.markdown("<h2 id='1-engine-math-model'><span class='section-badge'>Phase 1</s
 
 col_math1, col_math2 = st.columns(2)
 with col_math1:
-    render_image("image_3ccb7a.png", "SPX Implied Volatility Smiles (Input Data)")
+    render_image("plots/spx_iv_smile.png", "SPX Implied Volatility Smiles (Input Data)")
 with col_math2:
-    render_image("image_3ccb80.png", "SPX ATM Volatility Term Structure")
+    render_image("plots/spx_term_structure.png", "SPX ATM Volatility Term Structure")
 
 st.markdown("""
 Standard Euler discretization is unstable for Heston processes because the variance component ($v_t$) can drift negative. This pipeline implements the **Andersen (2008) Quadratic-Exponential (QE) Scheme** to preserve boundary conditions.
@@ -232,9 +232,9 @@ st.latex(r"L(K,t) = \frac{\sigma_{LV}(K,t)}{\sqrt{\mathbb{E}[v_t \mid S_t = K]}}
 
 col_calib1, col_calib2 = st.columns(2)
 with col_calib1:
-    render_image("image_3cce40.png", "Dupire Local Volatility Surface (Target)")
+    render_image("plots/dupire_surface.png", "Dupire Local Volatility Surface (Target)")
 with col_calib2:
-    render_image("image_3cce46.png", "L2 Norm Convergence of Leverage Function")
+    render_image("plots/calibration_convergence.png", "L2 Norm Convergence of Leverage Function")
 
 st.markdown("""
 <div class="mechanism-box">
@@ -255,7 +255,7 @@ with col_3d:
 
 with col_density:
     st.markdown("<br>", unsafe_allow_html=True)
-    render_image("image_3cce5f.png", "Density Matching (LSV MC vs. Dupire Target)")
+    render_image("plots/density_match.png", "Density Matching (LSV MC vs. Dupire Target)")
 
 st.markdown("The 3D surface represents the calibrated multiplier applied to the stochastic variance process. The density matching chart confirms that the Markovian projection successfully aligns the Monte Carlo terminal distributions with the theoretical target.")
 
