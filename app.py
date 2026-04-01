@@ -168,7 +168,6 @@ Vanilla option pricing is a well-understood problem. However, pricing Over-The-C
 Local Stochastic Volatility (LSV) calibrates a spatial leverage function over an underlying Heston process. This combination forces the model's marginal distributions to match the market's vanilla prices today, while maintaining realistic variance dynamics for the future.
 """)
 
-
 st.divider()
 
 # ==========================================
@@ -184,7 +183,7 @@ with col_math2:
 
 st.markdown("""
 Standard Euler discretization is unstable for Heston processes because the variance component ($v_t$) can drift negative. This implementation uses the Andersen (2008) Quadratic-Exponential (QE) scheme to preserve boundary conditions.
-The engine is vectorized in NumPy. By replacing SciPy statistical calls with pre-allocated random normal arrays, the engine achieves efficient execution of 80,000 Monte Carlo paths across discrete time steps.
+The engine is vectorized in NumPy. By replacing SciPy statistical calls with pre-allocated random normal arrays, the engine achieves efficient execution of 15,000 Monte Carlo paths across discrete time steps.
 """)
 
 st.markdown("<h2 id='2-markovian-projection'><span class='section-badge'>Phase 2</span> Markovian Projection</h2>", unsafe_allow_html=True)
