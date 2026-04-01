@@ -144,10 +144,10 @@ st.markdown("""
 <div class="hero-box">
     <div class="hero-box-title">Project Overview</div>
     <ul>
-        <li><strong>Objective:</strong> Standard models face a structural trade-off. Heston misprices initial static hedges, while Dupire fails to capture forward volatility dynamics. We implement an LSV model to reconcile the mismatch between static smile fit and forward volatility dynamics.</li>
+        <li><strong>Objective:</strong> Standard models face a structural trade-off. Heston misprices initial static hedges, while Dupire fails to capture forward volatility dynamics. We build an LSV model to reconcile the mismatch between static smile fit and forward volatility dynamics.</li>
         <li><strong>Implementation:</strong> Built a vectorized <strong>Quadratic-Exponential (QE) Monte Carlo engine</strong> and calibrated a 2D leverage surface via exact <strong>Gyöngy (1986) Markovian Projection</strong>.</li>
         <li><strong>Validation:</strong> Evaluated the model across 5 out-of-sample days, confirming the expected parametric resilience of Heston versus the grid decay of Local Volatility.</li>
-        <li><strong>Application:</strong> Priced OTC Down-and-Out Barrier Options, demonstrating how deterministic volatility assumptions (Dupire) lead to significant pricing errors.</li>
+        <li><strong>Use Case:</strong> Priced OTC Down-and-Out Barrier Options, showing how deterministic volatility assumptions (Dupire) lead to significant pricing errors.</li>
     </ul>
 </div>
 """, unsafe_allow_html=True)
@@ -168,34 +168,7 @@ Vanilla option pricing is a well-understood problem. However, pricing Over-The-C
 Local Stochastic Volatility (LSV) calibrates a spatial leverage function over an underlying Heston process. This combination forces the model's marginal distributions to match the market's vanilla prices today, while maintaining realistic variance dynamics for the future.
 """)
 
-st.markdown("""
-<div class="pipeline-container">
-    <div class="pipeline-block">
-        <div class="pipeline-block-title">Step 1</div>
-        <div class="pipeline-block-desc"><b>Market Data</b><br>SPX Options Grid</div>
-    </div>
-    <div class="pipeline-arrow">➔</div>
-    <div class="pipeline-block">
-        <div class="pipeline-block-title">Step 2</div>
-        <div class="pipeline-block-desc"><b>Base Models</b><br>Dupire LV + Heston SV</div>
-    </div>
-    <div class="pipeline-arrow">➔</div>
-    <div class="pipeline-block">
-        <div class="pipeline-block-title">Step 3</div>
-        <div class="pipeline-block-desc"><b>Calibration</b><br>Gyöngy Projection</div>
-    </div>
-    <div class="pipeline-arrow">➔</div>
-    <div class="pipeline-block">
-        <div class="pipeline-block-title">Step 4</div>
-        <div class="pipeline-block-desc"><b>Validation</b><br>OOS Forward Engine</div>
-    </div>
-    <div class="pipeline-arrow">➔</div>
-    <div class="pipeline-block">
-        <div class="pipeline-block-title">Step 5</div>
-        <div class="pipeline-block-desc"><b>Execution</b><br>Exotic Pricing</div>
-    </div>
-</div>
-""", unsafe_allow_html=True)
+
 st.divider()
 
 # ==========================================
@@ -210,8 +183,7 @@ with col_math2:
     render_image("plots/spx_term_structure.png", "SPX ATM Volatility Term Structure")
 
 st.markdown("""
-Standard Euler discretization is unstable for Heston processes because the variance component ($v_t$) can drift negative. This pipeline implements the **Andersen (2008) Quadratic-Exponential (QE) Scheme** to preserve boundary conditions.
-
+Standard Euler discretization is unstable for Heston processes because the variance component ($v_t$) can drift negative. This implementation uses the Andersen (2008) Quadratic-Exponential (QE) scheme to preserve boundary conditions.
 The engine is vectorized in NumPy. By replacing SciPy statistical calls with pre-allocated random normal arrays, the engine achieves efficient execution of 80,000 Monte Carlo paths across discrete time steps.
 """)
 
@@ -307,7 +279,7 @@ LSV captures this dynamic, resulting in a lower option premium. Dupire LV, assum
 </div>
 """, unsafe_allow_html=True)
 
-st.markdown("### Model Summary")
+st.markdown("### Key Takeaways")
 
 
 st.markdown("""
