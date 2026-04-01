@@ -320,5 +320,3 @@ st.markdown("""
 </ul>
 </div>
 """, unsafe_allow_html=True)
-
-st.markdown("<p style='text-align: center; font-size: 1.05rem; opacity: 0.7; margin-top: 30px;'><em>Pipeline complete. Results reflect out-of-sample evaluation.</em></p>", unsafe_allow_html=True)
