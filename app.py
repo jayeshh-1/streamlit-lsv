@@ -69,7 +69,7 @@ st.markdown("""
     .toc-link { text-decoration: none !important; font-size: 1rem !important; display: block !important; padding: 4px 0 !important; font-weight: 500 !important; color: var(--text-color) !important; opacity: 0.8 !important; transition: opacity 0.2s ease-in-out !important; }
     .toc-link:hover { opacity: 1.0 !important; text-decoration: none !important; }
     
-    /* --------------------------------------------------- */
+/* --------------------------------------------------- */
     /* 1. Base states (Hides mobile elements on Desktop)   */
     /* --------------------------------------------------- */
     .mobile-sidebar-hint { display: none; }
@@ -109,11 +109,11 @@ st.markdown("""
             font-weight: 800;
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            z-index: 99; /* Allows sidebar overlay to easily cover it */
+            z-index: 999999 !important; /* FIXED: Must be higher than Streamlit's top header */
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             animation: pulse 2s infinite; /* Pulses forever */
             pointer-events: none; 
-            transition: opacity 0.2s ease-in-out;
+            transition: opacity 0.2s ease-in-out, visibility 0.2s;
         }
         
         @keyframes pulse {
