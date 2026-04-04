@@ -19,31 +19,54 @@ st.set_page_config(
 # ==========================================
 st.markdown("""
     <style>
+    /* Main container width and font stack */
     .main { max-width: 1100px; margin: 0 auto; font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-    h1 { text-align: center; font-size: 2.6rem !important; font-weight: 800 !important; margin-bottom: 0.5rem !important; line-height: 1.25 !important; color: var(--text-color) !important; letter-spacing: -0.02em !important; }
-    .subtitle { text-align: center; font-size: 1.15rem !important; color: var(--text-color) !important; opacity: 0.75 !important; font-style: italic !important; margin-bottom: 2.5rem !important; font-weight: 400 !important; }
-    h2 { font-weight: 700 !important; font-size: 1.8rem !important; margin-top: 3.5rem !important; border-bottom: 2px solid var(--secondary-background-color) !important; padding-bottom: 0.5rem !important; margin-bottom: 1.5rem !important; color: var(--text-color) !important; letter-spacing: -0.01em !important; }
-    h3 { font-weight: 600 !important; font-size: 1.3rem !important; margin-top: 2rem !important; margin-bottom: 1rem !important; color: var(--text-color) !important; opacity: 0.9 !important; }
-    div[data-testid="stMarkdownContainer"] p, div[data-testid="stMarkdownContainer"] li { font-size: 1.1rem !important; line-height: 1.6 !important; font-weight: 400 !important; color: var(--text-color) !important; opacity: 0.85 !important; } 
+    h1 { text-align: center; font-size: 2.8rem !important; font-weight: 900 !important; margin-bottom: 0.5rem !important; line-height: 1.25 !important; color: var(--text-color) !important; opacity: 0.95 !important; letter-spacing: -0.02em !important; }
+    .subtitle { text-align: center; font-size: 1.3rem !important; color: var(--text-color) !important; opacity: 0.75 !important; font-style: italic !important; margin-bottom: 1.8rem !important; font-weight: 400 !important; }
+    h2 { font-weight: 800 !important; font-size: 2.2rem !important; margin-top: 2.8rem !important; border-bottom: 1px solid rgba(128, 128, 128, 0.2) !important; padding-bottom: 0.5rem !important; margin-bottom: 1.5rem !important; color: var(--text-color) !important; opacity: 0.95 !important; letter-spacing: -0.01em !important; }
+    .section-badge {
+        background-color: #2563EB;
+        color: #FFFFFF !important;
+        padding: 8px 16px;              
+        border-radius: 8px;             
+        font-size: 1.65rem;             
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        display: inline-block;
+        vertical-align: middle;   
+        margin-right: 12px;
+    }
+    .h2-text {
+        position: relative;
+        top: 3px;
+    }
+    h3 { font-weight: 700 !important; font-size: 1.6rem !important; margin-top: 2rem !important; margin-bottom: 1rem !important; color: var(--text-color) !important; opacity: 0.95 !important; }
+    div[data-testid="stMarkdownContainer"] p, div[data-testid="stMarkdownContainer"] li { font-size: 1.25rem !important; line-height: 1.6 !important; font-weight: 400 !important; color: var(--text-color) !important; opacity: 0.9 !important; } 
     div[data-testid="stMarkdownContainer"] li { margin-bottom: 0.5rem !important; }
-    div[data-testid="stMarkdownContainer"] strong { font-weight: 600 !important; color: var(--text-color) !important; opacity: 1.0 !important; }
-    .section-badge { background-color: #3B82F6; color: #FFFFFF !important; padding: 4px 12px; border-radius: 4px; font-size: 1.0rem; vertical-align: middle; margin-right: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; display: inline-block; transform: translateY(-2px); }
+    div[data-testid="stMarkdownContainer"] strong { font-weight: 700 !important; color: var(--text-color) !important; opacity: 1.0 !important; }
+    
     .hero-box { background-color: var(--secondary-background-color); border: 1px solid rgba(128, 128, 128, 0.2); border-radius: 6px; padding: 20px 25px; margin: 1.5rem 0 2.5rem 0; }
     .hero-box-title { font-size: 1.2rem; font-weight: 700; color: #3B82F6; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
-    .math-box { text-align: center; font-size: 0.95rem; color: var(--text-color); opacity: 0.6; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: -10px; margin-top: 1.5rem; font-weight: 600; }
-    .findings-box { border-left: 4px solid #10B981 !important; padding: 1.2rem !important; margin: 2rem 0 !important; background-color: var(--secondary-background-color) !important; border-radius: 0 6px 6px 0 !important; }
-    .findings-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; color: #10B981; text-transform: uppercase; letter-spacing: 0.05em; }
+    .math-box { text-align: center; font-size: 1.05rem; color: var(--text-color); opacity: 0.6; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: -10px; margin-top: 1.5rem; font-weight: 600; }
+    .findings-box { border-left: 5px solid #10B981 !important; padding: 1.2rem !important; margin: 2rem 0 !important; background-color: var(--secondary-background-color) !important; border-radius: 0 6px 6px 0 !important; }
+    .findings-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; color: #10B981; text-transform: uppercase; letter-spacing: 0.05em; }
     .pipeline-container { display: flex; justify-content: space-between; align-items: center; margin: 2rem 0; gap: 8px; }
     .pipeline-block { background-color: var(--secondary-background-color); padding: 12px; border-radius: 6px; text-align: center; flex: 1; border: 1px solid rgba(128, 128, 128, 0.2); }
     .pipeline-block-title { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; color: #3B82F6; }
     .pipeline-block-desc { font-size: 0.9rem; opacity: 0.8; }
     .pipeline-arrow { font-size: 1.2rem; opacity: 0.3; }
-    .mechanism-box { border-left: 4px solid #3B82F6 !important; padding: 1.2rem !important; margin: 1.5rem 0 !important; background-color: var(--secondary-background-color) !important; border-radius: 0 6px 6px 0 !important; }
-    .insight-box { border-left: 4px solid #8B5CF6 !important; padding: 1.2rem !important; margin: 1.5rem 0 !important; background-color: rgba(139, 92, 246, 0.05) !important; color: #6d28d9 !important; border-radius: 0 6px 6px 0 !important; }
+    
+    .mechanism-box { border-left: 5px solid #3B82F6 !important; padding: 1.25rem !important; margin: 1.5rem 0 !important; background-color: var(--secondary-background-color) !important; color: var(--text-color) !important; border-radius: 0 6px 6px 0 !important; }
+    .mechanism-title { color: #3B82F6; font-size: 1.25rem; font-weight: 800; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+    
+    .insight-box { border-left: 5px solid #8B5CF6 !important; padding: 1.25rem !important; margin: 1.5rem 0 !important; background-color: var(--secondary-background-color) !important; color: var(--text-color) !important; border-radius: 0 6px 6px 0 !important; }
+    .insight-title { color: #8B5CF6; font-size: 1.25rem; font-weight: 800; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+    
     .stat-box { background-color: var(--secondary-background-color) !important; border: 1px solid rgba(128, 128, 128, 0.2) !important; border-radius: 6px !important; padding: 15px !important; text-align: center !important; margin-bottom: 15px !important; }
     .stat-value { font-size: 2.0rem !important; font-weight: 700 !important; color: var(--text-color) !important; margin-bottom: 2px !important; line-height: 1 !important;}
     .stat-label { font-size: 0.85rem !important; font-weight: 600 !important; color: var(--text-color) !important; opacity: 0.6 !important; text-transform: uppercase !important; letter-spacing: 0.05em !important;}
-    .toc-link { text-decoration: none !important; font-size: 0.95rem !important; display: block !important; padding: 4px 0 !important; font-weight: 500 !important; color: var(--text-color) !important; opacity: 0.8 !important; transition: opacity 0.2s ease-in-out !important; }
+    .toc-link { text-decoration: none !important; font-size: 1 rem !important; display: block !important; padding: 4px 0 !important; font-weight: 500 !important; color: var(--text-color) !important; opacity: 0.8 !important; transition: opacity 0.2s ease-in-out !important; }
     .toc-link:hover { opacity: 1.0 !important; text-decoration: none !important; }
     </style>
 """, unsafe_allow_html=True)
@@ -121,11 +144,11 @@ def load_real_3d_leverage_surface():
 with st.sidebar:
     st.title("Research Outline")
     st.markdown("""
-    <a href="#0-the-market-problem" class="toc-link">0. The Market Problem</a>
-    <a href="#1-engine-math-model" class="toc-link">1. Engine & Math model</a>
-    <a href="#2-markovian-projection" class="toc-link">2. Calibration Diagnostics</a>
-    <a href="#3-out-of-sample-results" class="toc-link">3. Out-Of-Sample Results</a>
-    <a href="#4-exotic-barrier-arbitrage" class="toc-link">4. Arbitrage & Exotics</a>
+    <a href="#0-the-market-problem" target="_self" class="toc-link">0. The Market Problem</a>
+    <a href="#1-engine-math-model" target="_self" class="toc-link">1. Engine & Math model</a>
+    <a href="#2-markovian-projection" target="_self" class="toc-link">2. Calibration Diagnostics</a>
+    <a href="#3-out-of-sample-results" target="_self" class="toc-link">3. Out-Of-Sample Results</a>
+    <a href="#4-exotic-barrier-arbitrage" target="_self" class="toc-link">4. Arbitrage & Exotics</a>
     """, unsafe_allow_html=True)
 
     st.markdown("---")
@@ -140,13 +163,36 @@ with st.sidebar:
 st.markdown("<h1>Local Stochastic Volatility (LSV)</h1>", unsafe_allow_html=True)
 st.markdown("<p class='subtitle'>Bridging Heston and Dupire models for exotic derivatives pricing under realistic volatility dynamics.</p>", unsafe_allow_html=True)
 
+# Small, muted author line under the subtitle
+st.markdown("""
+    <div style='text-align: center; margin-top: -1.0rem; margin-bottom: 3rem;'>
+        <span style='font-size: 1.0rem; color: var(--text-color); opacity: 0.5; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase;'>
+            Research by <strong>Jayesh Chaudhary</strong>
+        </span>
+    </div>
+""", unsafe_allow_html=True)
+
+# Quick Stats Bar (Simplified)
+col_a, col_b = st.columns(2)
+
+# Reusable green style templates for a pleasant, eye-friendly look
+box_css = "background-color: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 8px; padding: 20px 15px; text-align: center; margin-bottom: 20px;"
+val_css = "font-size: 1.8rem; font-weight: 800; color: #10B981; margin-bottom: 6px; line-height: 1;"
+lbl_css = "font-size: 0.95rem; font-weight: 700; color: var(--text-color); opacity: 0.7; text-transform: uppercase; letter-spacing: 0.05em;"
+
+with col_a:
+    st.markdown(f"<div style='{box_css}'><div style='{lbl_css}'>Underlying Asset</div><div style='{val_css}'>SPX Options</div></div>", unsafe_allow_html=True)
+with col_b:
+    st.markdown(f"<div style='{box_css}'><div style='{lbl_css}'>Resolution</div><div style='{val_css}'>End-of-Day</div></div>", unsafe_allow_html=True)
+
+    
 st.markdown("""
 <div class="hero-box">
     <div class="hero-box-title">Project Overview</div>
     <ul>
-        <li><strong>Objective:</strong> Standard models face a structural trade-off. Heston misprices initial static hedges, while Dupire fails to capture forward volatility dynamics. We build an LSV model to reconcile the mismatch between static smile fit and forward volatility dynamics.</li>
-        <li><strong>Implementation:</strong> Built a vectorized <strong>Quadratic-Exponential (QE) Monte Carlo engine</strong> and calibrated a 2D leverage surface via exact <strong>Gyöngy (1986) Markovian Projection</strong>.</li>
-        <li><strong>Validation:</strong> Evaluated the model across 5 out-of-sample days, confirming the expected parametric resilience of Heston versus the grid decay of Local Volatility.</li>
+        <li><strong>Objective:</strong> Standard models Option traders face a persistent model trade-off. Heston gets the future skew right but fails to perfectly match today's prices (introducing basis risk into static hedges). Dupire matches today's prices perfectly but assumes volatility is deterministic (causing massive mispricing on path-dependent exotics).</li>
+        <li><strong>Implementation:</strong> Built a vectorized <strong>Quadratic-Exponential (QE) Monte Carlo engine</strong> and calibrated a 2D leverage surface via exact <strong>Gyöngy (1986) Markovian Projection to get the best of both worlds.</strong></li>
+        <li><strong>The Stress Test:</strong> Instead of recalibrating daily like a production desk would, I intentionally forced a static Day-1 calibration grid through a 1-week forward market drift. This isolates and measures the structural "grid decay" of the models.</li>
         <li><strong>Use Case:</strong> Priced OTC Down-and-Out Barrier Options, showing how deterministic volatility assumptions (Dupire) lead to significant pricing errors.</li>
     </ul>
 </div>
@@ -155,17 +201,17 @@ st.markdown("""
 # ==========================================
 # SECTION 0: INTUITION
 # ==========================================
-st.markdown("<h2 id='0-the-market-problem'><span class='section-badge'>Phase 0</span> The Market Problem</h2>", unsafe_allow_html=True)
+st.markdown("<h2 id='0-the-market-problem'><span class='section-badge'>0.</span><span class='h2-text'> The Market Problem</span></h2>", unsafe_allow_html=True)
 
 st.markdown("""
-Vanilla option pricing is a well-understood problem. However, pricing Over-The-Counter (OTC) exotics requires models that accurately capture both the current market surface and future volatility dynamics.
+Pricing standard vanilla options is a solved problem. But when pricing Over-The-Counter (OTC) exotics, you need a model that accurately captures **both** today's market prices (for static hedging) and the dynamic evolution of volatility in the future (for dynamic hedging).
 
 ### Model Limitations
-* **Heston (Stochastic Volatility):** Captures forward skew by allowing variance to evolve stochastically. However, its 5-parameter formulation limits its ability to exactly fit the Day 1 vanilla smile, introducing basis risk into static hedging portfolios.
-* **Dupire (Local Volatility):** Provides an exact fit to the initial market smile via a non-parametric grid. However, it assumes volatility is deterministic, flattening the forward skew and misestimating tail risks during market sell-offs.
+* **Heston (Stochastic Volatility):** A parametric model that lets variance evolve randomly. It does a great job capturing how volatility dynamically spikes when markets sell off. However, because it only has 5 parameters, it lacks the flexibility to perfectly fit the initial Day 1 market smile.
+* **Dupire (Local Volatility):** A non-parametric model that acts like a highly flexible grid, perfectly fitting today's market prices. The catch? It assumes future volatility is 100% determined by time and spot price. When the market actually drops, Dupire's grid fails to capture the sudden dynamic spike in volatility, leaving exotics severely mispriced.
 
 ### The LSV model
-Local Stochastic Volatility (LSV) calibrates a spatial leverage function over an underlying Heston process. This combination forces the model's marginal distributions to match the market's vanilla prices today, while maintaining realistic variance dynamics for the future.
+Think of Local Stochastic Volatility (LSV) as a "multiplier map" overlaid on top of a Heston model. We let Heston run its random variance paths, but at every time-step and strike, we apply a calibrated Leverage Function (the multiplier). This forces the final Monte Carlo distribution to perfectly match today's market prices, while keeping Heston's realistic volatility dynamics alive for the path-dependent future.
 """)
 
 st.divider()
@@ -173,20 +219,22 @@ st.divider()
 # ==========================================
 # SECTION 1 & 2: THE ENGINE & CALIBRATION
 # ==========================================
-st.markdown("<h2 id='1-engine-math-model'><span class='section-badge'>Phase 1</span> Engine & Math model</h2>", unsafe_allow_html=True)
+st.markdown("<h2 id='1-engine-math-model'><span class='section-badge'>1.</span><span class='h2-text'> Engine & Math model</span></h2>", unsafe_allow_html=True)
 
 col_math1, col_math2 = st.columns(2)
 with col_math1:
     render_image("plots/spx_iv_smile.png", "SPX Implied Volatility Smiles (Input Data)")
 with col_math2:
     render_image("plots/spx_term_structure.png", "SPX ATM Volatility Term Structure")
+    
+    
 
 st.markdown("""
 Standard Euler discretization is unstable for Heston processes because the variance component ($v_t$) can drift negative. This implementation uses the Andersen (2008) Quadratic-Exponential (QE) scheme to preserve boundary conditions.
 The engine is vectorized in NumPy. By replacing SciPy statistical calls with pre-allocated random normal arrays, the engine achieves efficient execution of 15,000 Monte Carlo paths across discrete time steps.
 """)
 
-st.markdown("<h2 id='2-markovian-projection'><span class='section-badge'>Phase 2</span> Markovian Projection</h2>", unsafe_allow_html=True)
+st.markdown("<h2 id='2-markovian-projection'><span class='section-badge'>2.</span><span class='h2-text'> Markovian Projection</span></h2>", unsafe_allow_html=True)
 
 st.markdown("""
 LSV relies on calibrating a Leverage Function $L(K, t)$. This is achieved using the **Gyöngy (1986) Theorem**.
@@ -208,8 +256,11 @@ with col_calib2:
 
 st.markdown("""
 <div class="mechanism-box">
-<strong>Numerical Stability Control</strong><br>
-The Dupire equation requires dividing by the second derivative of call prices with respect to strike. Deep Out-Of-The-Money, this approaches zero, causing local volatility estimates to destabilize. The engine applies strict localization and bounds clipping to ensure valid inputs into the Monte Carlo paths.
+<div class="mechanism-title">Calibration & Numerical Stability</div>
+<p>To calibrate the engine, we use the <strong>Gyöngy (1986) Theorem</strong>. The engine simulates thousands of paths, estimates the variance, and applies a multiplier to match the Dupire target.</p>
+<p><strong>The Heatmap (Left):</strong> This is the theoretical "target" surface we are trying to replicate.<br>
+<strong>The Convergence Plot (Right):</strong> This tracks our calibration error over 5 iterations. The sharp downward slope proves the engine is successfully learning the target surface.</p>
+<p><strong>The Engineering Challenge:</strong> The Dupire equation requires dividing by the second derivative of call prices. Deep Out-Of-The-Money, this approaches zero, causing local volatility estimates to explode. By applying strict localization and bounds clipping, the engine ensures valid inputs into the Monte Carlo paths without destabilizing.</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -227,27 +278,44 @@ with col_density:
     st.markdown("<br>", unsafe_allow_html=True)
     render_image("plots/density_match.png", "Density Matching (LSV MC vs. Dupire Target)")
 
-st.markdown("The 3D surface represents the calibrated multiplier applied to the stochastic variance process. The density matching chart confirms that the Markovian projection successfully aligns the Monte Carlo terminal distributions with the theoretical target.")
+st.markdown("""
+The 3D surface represents the calibrated `Leverage Function`—the spatial multiplier applied to the underlying Heston paths. 
+
+The density chart on the right visualizes a critical production decision. The solid blue Dupire target is highly jagged; taking second derivatives of real-world bid/ask quotes creates extreme microstructure noise. Instead of violently overfitting to these quoting artifacts, our LSV engine applies a 1D Gaussian kernel filter (`sigma=1.5`). The dashed orange line shows the result: the Monte Carlo paths successfully capture the core probability mass of the target distribution while actively filtering out the numerical noise that would otherwise crash the engine.
+""")
 
 st.divider()
 
 # ==========================================
 # SECTION 3: OUT OF SAMPLE VALIDATION
 # ==========================================
-st.markdown("<h2 id='3-out-of-sample-results'><span class='section-badge'>Phase 3</span> Out-of-Sample Results</h2>", unsafe_allow_html=True)
+st.markdown("<h2 id='3-out-of-sample-results'><span class='section-badge'>3.</span><span class='h2-text'> Out-of-Sample Results</span></h2>", unsafe_allow_html=True)
 
 st.markdown("""
-To evaluate model stability, the Leverage Function was calibrated on **August 16, 2022**, and then tested out-of-sample against market prices over the following 5 trading sessions.
+In a production environment, LSV grids are recalculated every morning. However, to truly evaluate the structural integrity of the models, we intentionally "froze" the calibration on **August 16, 2022**, and pushed the models forward across 5 days of unseen market data. This allows us to observe the mechanical degradation of the grids.
 """)
 
 st.dataframe(load_oos_summary(), use_container_width=True, hide_index=True)
 
+
+# Visualizing OOS Errors
+st.markdown("### Out-of-Sample Bias & Error Distribution")
+col_oos1, col_oos2 = st.columns(2)
+with col_oos1:
+    render_image("plots/oos_residual_kde.png", "Residual Distribution (Model Bias)")
+with col_oos2:
+    render_image("plots/oos_error_smile.png", "Pricing Error Smile across Strikes")
+
+st.markdown("""
+The plots above reveal the exact nature of the errors. The **Residual KDE (left)** shows that while Dupire suffers from a massive systemic overpricing bias as the market drifts, LSV and Heston residuals remain tightly centered near zero. The **Error Smile (right)** confirms this holds true across the entire strike spectrum.
+""")
+
 st.markdown("""
 <div class="insight-box">
-<strong>The Parametric Trade-off</strong><br>
-You might notice Heston slightly outperforms LSV out-of-sample on vanillas (RMSE of $17.84 vs $19.42). This is a standard parametric vs. non-parametric trade-off.<br><br>
-Heston's 5 parameters act as a structural regularizer, allowing the model to naturally shift alongside spot price movements ("Sticky Moneyness"). Conversely, LSV relies on a dense grid calibrated specifically to Day 1. As the market drifts, this grid ages (the "Sticky Strike" effect).<br><br>
-Trading desks generally accept this minor multi-day degradation—and recalculate the LSV grid daily—because an exact fit to the Day 1 smile is mandatory for pricing complex path-dependent exotics.
+<div class="insight-title">The Parametric Trade-off</div>
+<p>You might notice Heston slightly outperforms LSV out-of-sample on vanillas (RMSE of $17.84 vs $19.42). This is a standard parametric vs. non-parametric trade-off.</p>
+<p>Heston's 5 parameters act as a structural regularizer, allowing the model to naturally shift alongside spot price movements ("Sticky Moneyness"). Conversely, LSV relies on a dense grid calibrated specifically to Day 1. As the market drifts, this grid ages (the "Sticky Strike" effect).</p>
+<p>Trading desks generally accept this minor multi-day degradation and recalculate the LSV grid daily because an exact fit to the Day 1 smile is mandatory for pricing complex path-dependent exotics.</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -256,7 +324,7 @@ st.divider()
 # ==========================================
 # SECTION 4: EXOTIC ARBITRAGE (THE CONCLUSION)
 # ==========================================
-st.markdown("<h2 id='4-exotic-barrier-arbitrage'><span class='section-badge'>Phase 4</span> Exotic Barrier Pricing</h2>", unsafe_allow_html=True)
+st.markdown("<h2 id='4-exotic-barrier-arbitrage'><span class='section-badge'>4.</span><span class='h2-text'> Exotic Barrier Pricing</span></h2>", unsafe_allow_html=True)
 
 st.markdown("""
 For OTC derivatives like Down-and-Out Barrier Calls, there is no centralized order book to observe a "true" market price. A reliable internal model is required for quoting and risk management. 
@@ -272,13 +340,13 @@ Across all configurations, Dupire overprices barrier options by more than 200%, 
 
 st.markdown("""
 <div class="mechanism-box">
-<strong>The Cost of Deterministic Volatility:</strong><br>
-Equity indices generally exhibit a negative spot-volatility correlation. If the SPX drops toward the barrier, market volatility structurally increases. This higher volatility raises the probability that the asset price breaches the knock-out level, rendering the option worthless.<br><br>
-LSV captures this dynamic, resulting in a lower option premium. Dupire LV, assuming deterministic volatility, underestimates the probability of a barrier breach. Utilizing a pure Local Volatility model in this context leads to systematic overpricing, exposing the desk to adverse selection and persistent hedging losses.
+<div class="mechanism-title">The Cost of Deterministic Volatility</div>
+<p>Equity indices generally exhibit a negative spot-volatility correlation. If the SPX drops toward the barrier, market volatility structurally increases. This higher volatility raises the probability that the asset price breaches the knock-out level, rendering the option worthless.</p>
+<p>LSV captures this dynamic, resulting in a lower option premium. Dupire LV, assuming deterministic volatility, underestimates the probability of a barrier breach. Utilizing a pure Local Volatility model in this context leads to systematic overpricing, exposing the desk to adverse selection and persistent hedging losses.</p>
 </div>
 """, unsafe_allow_html=True)
 
-st.markdown("### Key Takeaways")
+st.markdown("---")
 
 
 st.markdown("""
@@ -289,5 +357,18 @@ st.markdown("""
 <li><strong>Engine Stability:</strong> Exact Gyöngy Markovian Projection with boundary controls is required to prevent leverage function degradation.</li>
 <li><strong>Production Use:</strong> While parametric models show slight out-of-sample resilience for vanillas, the non-parametric LSV grid is critical to avoid structural pricing errors in OTC exotics.</li>
 </ul>
+</div>
+""", unsafe_allow_html=True)
+
+
+st.markdown("""
+<div style='text-align: center; margin-top: 50px; padding-top: 20px; border-bottom: 1px solid rgba(128, 128, 128, 0.2);'>
+    <p style='font-size: 1.15rem; color: #6B7280; font-style: italic;'>
+        If you made it all the way to the end, thank you for viewing my work. <br>
+        I am always looking to refine these projects, so if you have critiques, suggestions, or just want to talk market dynamics, I'd love to hear them:
+    </p>
+    <a href='mailto:jayeshchaudharyofficial@gmail.com' style='font-size: 1.15rem; font-weight: 700; color: #FFFFFF; background-color: #3B82F6; padding: 10px 24px; border-radius: 6px; text-decoration: none; display: inline-block; transition: all 0.2s; margin-bottom: 30px;'>
+        ✉️ Email Me
+    </a>
 </div>
 """, unsafe_allow_html=True)
