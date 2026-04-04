@@ -108,7 +108,7 @@ st.markdown("""
                 pointer-events: none; 
                 transition: opacity 0.2s ease-in-out;
             }
-            
+        
             @keyframes pulse {
                 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
                 70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(37, 99, 235, 0); }
@@ -121,7 +121,8 @@ st.markdown("""
                 visibility: hidden !important;
             }
         }
-        </style>
+    }
+    </style>
 """, unsafe_allow_html=True)
 
 # Helper function to load images safely
