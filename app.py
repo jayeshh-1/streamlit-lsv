@@ -66,8 +66,58 @@ st.markdown("""
     .stat-box { background-color: var(--secondary-background-color) !important; border: 1px solid rgba(128, 128, 128, 0.2) !important; border-radius: 6px !important; padding: 15px !important; text-align: center !important; margin-bottom: 15px !important; }
     .stat-value { font-size: 2.0rem !important; font-weight: 700 !important; color: var(--text-color) !important; margin-bottom: 2px !important; line-height: 1 !important;}
     .stat-label { font-size: 0.85rem !important; font-weight: 600 !important; color: var(--text-color) !important; opacity: 0.6 !important; text-transform: uppercase !important; letter-spacing: 0.05em !important;}
-    .toc-link { text-decoration: none !important; font-size: 1rem !important; display: block !important; padding: 4px 0 !important; font-weight: 500 !important; color: var(--text-color) !important; opacity: 0.8 !important; transition: opacity 0.2s ease-in-out !important; }
-    .toc-link:hover { opacity: 1.0 !important; text-decoration: none !important; }
+    .toc-link { text-decoration: none !important; font-size: 1.2rem !important; text-align: center !important; display: block !important; padding: 12px 10px !important; font-weight: 500 !important; color: var(--text-color) !important; opacity: 0.8 !important; transition: opacity 0.2s ease-in-out !important; }
+    .toc-link:hover { 
+        opacity: 1.0 !important; 
+        color: #FBBF24 !important; 
+        background-color: rgba(251, 191, 36, 0.05) !important; /* Subtle gold glow on hover */
+        text-decoration: none !important;
+    }
+    
+   
+    /* --------------------------------------------------- */
+    /* Sidebar Brand: Compact Royal Research Card          */
+    /* --------------------------------------------------- */
+    
+    .author-card-fixed {
+        background-color: #0F172A !important; 
+        border-top: 2px solid #FBBF24 !important; /* Slimmer gold line */
+        border-radius: 10px !important;
+        padding: 12px 10px !important; /* Massively reduced padding */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+        margin-bottom: 15px !important;
+        text-align: center !important;
+    }
+
+    .sidebar-label-fixed { 
+        color: #FBBF24 !important; 
+        font-weight: 900 !important; 
+        letter-spacing: 0.15em !important; 
+        text-transform: uppercase !important; 
+        font-size: 1.03rem !important; /* Smaller label */
+        display: block !important;
+        margin-bottom: 2px !important; /* Tightened gap */
+    }
+
+    .sidebar-author-fixed { 
+        color: #FFFFFF !important; 
+        font-weight: 800 !important; 
+        font-size: 1.34rem !important; /* Sharper name size */
+        display: block !important;
+        line-height: 1.1 !important;
+    }
+
+    .sidebar-sub-fixed {
+        color: rgba(255, 255, 255, 0.65) !important; 
+        font-style: italic !important;
+        font-weight: 400 !important;
+        font-size: 1.05rem !important; /* Smaller designation */
+        display: block !important;
+        margin-top: 8px !important; /* Tightened gap */
+        border-top: 1px solid rgba(255, 255, 255, 0.1); 
+        padding-top: 6px !important;
+    }
+
     
 /* --------------------------------------------------- */
     /* 1. Base states (Hides mobile elements on Desktop)   */
@@ -217,10 +267,13 @@ with st.sidebar:
     """, unsafe_allow_html=True)
 
     st.markdown("---")
-    st.info(
-        "**Author:** Jayesh Chaudhary\n\n"
-        "**Role:** Quantitative Researcher\n\n"
-    )
+    st.markdown("""
+    <div class="author-card-fixed">
+        <span class="sidebar-label-fixed">AUTHOR</span>
+        <span class="sidebar-author-fixed">Jayesh Chaudhary</span>
+        <span class="sidebar-sub-fixed">Quantitative Researcher</span>
+    </div>
+    """, unsafe_allow_html=True)
 
 # ==========================================
 # MAIN DOCUMENT: TITLE & HERO
@@ -232,7 +285,7 @@ st.markdown('<div class="mobile-menu-badge">👈 Topics Menu</div>', unsafe_allo
 st.markdown("<h1>Local Stochastic Volatility (LSV)</h1>", unsafe_allow_html=True)
 st.markdown("<p class='subtitle'>Bridging Heston and Dupire models for exotic derivatives pricing under realistic volatility dynamics.</p>", unsafe_allow_html=True)
 
-# Small, muted author line under the subtitle
+# Small, muted author line under the subtitlea
 st.markdown("""
     <div style='text-align: center; margin-top: -1.0rem; margin-bottom: 3rem;'>
         <span style='font-size: 1.0rem; color: var(--text-color); opacity: 0.5; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase;'>
