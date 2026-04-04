@@ -90,7 +90,7 @@ st.markdown("""
             display: block !important;
             position: fixed;
             top: 14px;
-            left: 55px; /* Sits right next to the native Streamlit hamburger menu */
+            left: 55px; 
             background-color: #2563EB;
             color: white;
             padding: 4px 10px;
@@ -99,15 +99,19 @@ st.markdown("""
             font-weight: 800;
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            z-index: 999999;
+            z-index: 999; /* FIX 1: Lowered so the open sidebar covers it */
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            animation: pulse 2s infinite;
-            pointer-events: none; /* Prevents it from blocking clicks */
+            /* FIX 2: Pulses 4 times, then completely fades away after 8 seconds */
+            animation: pulse 2s 4, fadeOut 0.5s 8s forwards; 
+            pointer-events: none; 
         }
         @keyframes pulse {
             0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
             70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(37, 99, 235, 0); }
             100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+        }
+        @keyframes fadeOut {
+            to { opacity: 0; visibility: hidden; }
         }
     }
     .mobile-menu-badge { display: none; } /* Hides it entirely on desktop */
@@ -195,7 +199,6 @@ with st.sidebar:
     
     
     <div class="mobile-sidebar-hint">
-        Section selected! <br>
         <strong>Tap outside</strong> or <strong>swipe left</strong> to close menu.
     </div>
     """, unsafe_allow_html=True)
