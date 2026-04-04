@@ -84,7 +84,33 @@ st.markdown("""
             border: 1px solid rgba(59, 130, 246, 0.3);
             line-height: 1.4;
         }
+        
+        /* Floating Pointer to the Hamburger Menu */
+        .mobile-menu-badge {
+            display: block !important;
+            position: fixed;
+            top: 14px;
+            left: 55px; /* Sits right next to the native Streamlit hamburger menu */
+            background-color: #2563EB;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            z-index: 999999;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            animation: pulse 2s infinite;
+            pointer-events: none; /* Prevents it from blocking clicks */
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(37, 99, 235, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+        }
     }
+    .mobile-menu-badge { display: none; } /* Hides it entirely on desktop */
     </style>
 """, unsafe_allow_html=True)
 
@@ -183,6 +209,10 @@ with st.sidebar:
 # ==========================================
 # MAIN DOCUMENT: TITLE & HERO
 # ==========================================
+
+# Mobile Tooltip pointing to the Sidebar
+st.markdown('<div class="mobile-menu-badge">👈 Topics Menu</div>', unsafe_allow_html=True)
+
 st.markdown("<h1>Local Stochastic Volatility (LSV)</h1>", unsafe_allow_html=True)
 st.markdown("<p class='subtitle'>Bridging Heston and Dupire models for exotic derivatives pricing under realistic volatility dynamics.</p>", unsafe_allow_html=True)
 
