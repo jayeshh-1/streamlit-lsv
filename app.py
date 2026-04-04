@@ -66,8 +66,25 @@ st.markdown("""
     .stat-box { background-color: var(--secondary-background-color) !important; border: 1px solid rgba(128, 128, 128, 0.2) !important; border-radius: 6px !important; padding: 15px !important; text-align: center !important; margin-bottom: 15px !important; }
     .stat-value { font-size: 2.0rem !important; font-weight: 700 !important; color: var(--text-color) !important; margin-bottom: 2px !important; line-height: 1 !important;}
     .stat-label { font-size: 0.85rem !important; font-weight: 600 !important; color: var(--text-color) !important; opacity: 0.6 !important; text-transform: uppercase !important; letter-spacing: 0.05em !important;}
-    .toc-link { text-decoration: none !important; font-size: 1 rem !important; display: block !important; padding: 4px 0 !important; font-weight: 500 !important; color: var(--text-color) !important; opacity: 0.8 !important; transition: opacity 0.2s ease-in-out !important; }
+    .toc-link { text-decoration: none !important; font-size: 1rem !important; display: block !important; padding: 4px 0 !important; font-weight: 500 !important; color: var(--text-color) !important; opacity: 0.8 !important; transition: opacity 0.2s ease-in-out !important; }
     .toc-link:hover { opacity: 1.0 !important; text-decoration: none !important; }
+    /* Mobile-Only Sidebar Hint */
+    .mobile-sidebar-hint { display: none; }
+    @media (max-width: 768px) {
+        .mobile-sidebar-hint {
+            display: block !important;
+            background-color: rgba(59, 130, 246, 0.1);
+            color: #3B82F6;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-top: 25px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            line-height: 1.4;
+        }
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -149,6 +166,12 @@ with st.sidebar:
     <a href="#2-markovian-projection" target="_self" class="toc-link">2. Calibration Diagnostics</a>
     <a href="#3-out-of-sample-results" target="_self" class="toc-link">3. Out-Of-Sample Results</a>
     <a href="#4-exotic-barrier-arbitrage" target="_self" class="toc-link">4. Arbitrage & Exotics</a>
+    
+    
+    <div class="mobile-sidebar-hint">
+        Section selected! <br>
+        <strong>Tap outside</strong> or <strong>swipe left</strong> to close menu.
+    </div>
     """, unsafe_allow_html=True)
 
     st.markdown("---")
