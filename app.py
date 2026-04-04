@@ -68,9 +68,19 @@ st.markdown("""
     .stat-label { font-size: 0.85rem !important; font-weight: 600 !important; color: var(--text-color) !important; opacity: 0.6 !important; text-transform: uppercase !important; letter-spacing: 0.05em !important;}
     .toc-link { text-decoration: none !important; font-size: 1rem !important; display: block !important; padding: 4px 0 !important; font-weight: 500 !important; color: var(--text-color) !important; opacity: 0.8 !important; transition: opacity 0.2s ease-in-out !important; }
     .toc-link:hover { opacity: 1.0 !important; text-decoration: none !important; }
-    /* Mobile-Only Sidebar Hint */
+    
+    /* --------------------------------------------------- */
+    /* 1. Base states (Hides mobile elements on Desktop)   */
+    /* --------------------------------------------------- */
     .mobile-sidebar-hint { display: none; }
+    .mobile-menu-badge { display: none; } 
+
+    /* --------------------------------------------------- */
+    /* 2. Mobile overrides (Triggers only on phones)       */
+    /* --------------------------------------------------- */
     @media (max-width: 768px) {
+        
+        /* Hint text inside the sidebar */
         .mobile-sidebar-hint {
             display: block !important;
             background-color: rgba(59, 130, 246, 0.1);
@@ -85,41 +95,37 @@ st.markdown("""
             line-height: 1.4;
         }
         
-        /* Mobile-Only Sidebar Hint (Hides entirely on desktop) */
-        .mobile-menu-badge { display: none; } 
-
-        @media (max-width: 768px) {
-            .mobile-menu-badge {
-                display: block !important;
-                position: fixed;
-                top: 14px;
-                left: 55px; 
-                background-color: #2563EB;
-                color: white;
-                padding: 4px 10px;
-                border-radius: 12px;
-                font-size: 0.85rem;
-                font-weight: 800;
-                letter-spacing: 0.05em;
-                text-transform: uppercase;
-                z-index: 99; /* Allows sidebar overlay to easily cover it */
-                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-                animation: pulse 2s infinite; /* Pulses forever, no fade-out timer */
-                pointer-events: none; 
-                transition: opacity 0.2s ease-in-out;
-            }
+        /* Floating Pointer to the Hamburger Menu */
+        .mobile-menu-badge {
+            display: block !important;
+            position: fixed;
+            top: 14px;
+            left: 55px; 
+            background-color: #2563EB;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            z-index: 99; /* Allows sidebar overlay to easily cover it */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            animation: pulse 2s infinite; /* Pulses forever */
+            pointer-events: none; 
+            transition: opacity 0.2s ease-in-out;
+        }
         
-            @keyframes pulse {
-                0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
-                70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(37, 99, 235, 0); }
-                100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
-            }
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(37, 99, 235, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+        }
 
-            /* Modern CSS Trick: Hides the badge immediately when the sidebar opens */
-            .stApp:has([data-testid="stSidebar"][aria-expanded="true"]) .mobile-menu-badge {
-                opacity: 0 !important;
-                visibility: hidden !important;
-            }
+        /* Hides the badge immediately when the sidebar expands */
+        .stApp:has([data-testid="stSidebar"][aria-expanded="true"]) .mobile-menu-badge {
+            opacity: 0 !important;
+            visibility: hidden !important;
         }
     }
     </style>
