@@ -85,37 +85,43 @@ st.markdown("""
             line-height: 1.4;
         }
         
-        /* Floating Pointer to the Hamburger Menu */
-        .mobile-menu-badge {
-            display: block !important;
-            position: fixed;
-            top: 14px;
-            left: 55px; 
-            background-color: #2563EB;
-            color: white;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            font-weight: 800;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            z-index: 999; /* FIX 1: Lowered so the open sidebar covers it */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            /* FIX 2: Pulses 4 times, then completely fades away after 8 seconds */
-            animation: pulse 2s 4, fadeOut 0.5s 8s forwards; 
-            pointer-events: none; 
+        /* Mobile-Only Sidebar Hint (Hides entirely on desktop) */
+        .mobile-menu-badge { display: none; } 
+
+        @media (max-width: 768px) {
+            .mobile-menu-badge {
+                display: block !important;
+                position: fixed;
+                top: 14px;
+                left: 55px; 
+                background-color: #2563EB;
+                color: white;
+                padding: 4px 10px;
+                border-radius: 12px;
+                font-size: 0.85rem;
+                font-weight: 800;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                z-index: 99; /* Allows sidebar overlay to easily cover it */
+                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+                animation: pulse 2s infinite; /* Pulses forever, no fade-out timer */
+                pointer-events: none; 
+                transition: opacity 0.2s ease-in-out;
+            }
+            
+            @keyframes pulse {
+                0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+                70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(37, 99, 235, 0); }
+                100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+            }
+
+            /* Modern CSS Trick: Hides the badge immediately when the sidebar opens */
+            .stApp:has([data-testid="stSidebar"][aria-expanded="true"]) .mobile-menu-badge {
+                opacity: 0 !important;
+                visibility: hidden !important;
+            }
         }
-        @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(37, 99, 235, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
-        }
-        @keyframes fadeOut {
-            to { opacity: 0; visibility: hidden; }
-        }
-    }
-    .mobile-menu-badge { display: none; } /* Hides it entirely on desktop */
-    </style>
+        </style>
 """, unsafe_allow_html=True)
 
 # Helper function to load images safely
